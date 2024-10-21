@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alex-brot-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alex-brot-backend
+  template:
+    metadata:
+      labels:
+        app: alex-brot-backend
+    spec:
+      containers:
+        - name: alex-brot-backend
+          image: ghcr.io/alex-brot/alex-brot-backend:latest
+          imagePullPolicy: Always
+          env:
+            - name: JDBC_URL
+              valueFrom:
+                secretKeyRef:
+                  key: jdbc-uri
+                  name: alex-brot-postgres-app
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: alex-brot-postgres-app
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: alex-brot-postgres-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alex-brot-admin
+spec:
+  ports:
+    - port: 7001
+      targetPort: 7001
+      protocol: TCP
+      name: http
+  selector:
+    app: alex-brot-backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alex-brot-medusa
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      name: http
+  selector:
+    app: alex-brot-backend
+---
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: alex-brot
+#  annotations:
+#    spec.ingressClassName: traefik
+#    cert-manager.io/cluster-issuer: letsencrypt-prod
+#    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+#spec:
+#  rules:
+#    - host: api.alex-brot.stenz.dev
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: alex-brot-backend
+#                port:
+#                  number: 8080
+#  tls:
+#    - secretName: alex-brot-backend-tls
+#      hosts:
+#        - api.alex-brot.stenz.dev
