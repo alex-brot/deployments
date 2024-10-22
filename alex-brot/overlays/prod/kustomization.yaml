@@ -18,3 +18,14 @@ patches:
             containers:
               - name: alex-brot-backend
                 image: ghcr.io/alex-brot/alex-brot-medusa:v0.0.1
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-storfront
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-storefront
+                  image: ghcr.io/alex-brot/alex-brot-storefront:v0.0.1

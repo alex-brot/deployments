@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alex-brot-storefront
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alex-brot-storefront
+  template:
+    metadata:
+      labels:
+        app: alex-brot-storefront
+    spec:
+      containers:
+        - name: alex-brot-storefront
+          image: ghcr.io/alex-brot/alex-brot-storefront:latest
+          imagePullPolicy: Always
+          env:
+            - name: NEXT_PUBLIC_MEDUSA_BACKEND_URL
+              value: https://medusa.alex-brot.stenz.dev
+            - name: NEXT_PUBLIC_DEFAULT_REGION
+              value: at
+---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: alex-brot-medusa
+#spec:
+#  ports:
+#    - port: 9000
+#      targetPort: 9000
+#      protocol: TCP
+#      name: http
+#  selector:
+#    app: alex-brot-backend
+#---
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: alex-brot
+#  annotations:
+#    spec.ingressClassName: traefik
+#    cert-manager.io/cluster-issuer: letsencrypt-prod
+#    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+#spec:
+#  rules:
+#    - host: medusa.alex-brot.stenz.dev
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: alex-brot-medusa
+#                port:
+#                  number: 9000
+#  tls:
+#    - secretName: alex-brot-backend-tls
+#      hosts:
+#        - medusa.alex-brot.stenz.dev
+#
