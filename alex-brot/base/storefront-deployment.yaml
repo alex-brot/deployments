@@ -56,6 +56,6 @@ spec:
                 port:
                   number: 8000
   tls:
-    - secretName: alex-brot-backend-tls
+    - secretName: alex-brot-storefront-tls
       hosts:
         - alex-brot.stenz.dev
