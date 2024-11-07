@@ -28,4 +28,4 @@ patches:
             spec:
               containers:
                 - name: alex-brot-storefront
-                  image: ghcr.io/alex-brot/alex-brot-storefront:11486984074
+                  image: ghcr.io/alex-brot/alex-brot-storefront:11719942797
