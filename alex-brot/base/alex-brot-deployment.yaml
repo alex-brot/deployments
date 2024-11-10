@@ -23,7 +23,7 @@ spec:
                   key: uri
                   name: alex-brot-postgres-app
             - name: MEDUSA_ADMIN_BACKEND_URL
-              value: 'https://medusa.alex-brot.stenz.dev'
+              value: https://medusa.alex-brot.stenz.dev
 ---
 apiVersion: v1
 kind: Service

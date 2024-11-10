@@ -1,0 +1,55 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: alex-brot-dev
+
+resources:
+  - ../../base
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: alex-brot-backend
+      spec:
+        template:
+          spec:
+            containers:
+              - name: alex-brot-backend
+                image: ghcr.io/alex-brot/alex-brot-medusa:v0.0.1
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-storefront
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-storefront
+                  image: ghcr.io/alex-brot/alex-brot-storefront:11486984074
+  - patch: |-
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: alex-brot
+      spec:
+        rules:
+          - host: dev.medusa.alex-brot.stenz.dev
+        tls:
+          - secretName: alex-brot-backend-tls
+            hosts:
+              - dev.medusa.alex-brot.stenz.dev
+  - patch: |-
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: alex-brot-frontend
+      spec:
+        rules:
+          - host: dev.alex-brot.stenz.dev
+        tls:
+          - secretName: alex-brot-storefront-tls
+            hosts:
+              - dev.me.alex-brot.stenz.dev
