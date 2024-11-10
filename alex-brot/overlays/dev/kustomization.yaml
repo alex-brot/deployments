@@ -52,4 +52,4 @@ patches:
         tls:
           - secretName: alex-brot-storefront-tls
             hosts:
-              - dev.me.alex-brot.stenz.dev
+              - dev.alex-brot.stenz.dev

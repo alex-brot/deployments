@@ -12,6 +12,21 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alex-brot-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alex-brot/deployments
+    path: alex-brot/overlays/dev
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
     #---
     #apiVersion: argoproj.io/v1alpha1
     #kind: Application
