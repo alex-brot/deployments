@@ -32,11 +32,11 @@ patches:
               containers:
                 - name: alex-brot-storefront
                   image: ghcr.io/alex-brot/alex-brot-storefront:11486984074
-  - patch: ingress-patch-medusa.yaml
+  - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
       name: alex-brot
-  - patch: ingress-patch-storefront.yaml
+  - path: ingress-patch-storefront.yaml
     target:
       kind: Ingress
       name: alex-brot-frontend
