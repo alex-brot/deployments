@@ -32,27 +32,11 @@ patches:
               containers:
                 - name: alex-brot-storefront
                   image: ghcr.io/alex-brot/alex-brot-storefront:11486984074
-  - patch: |-
-      apiVersion: networking.k8s.io/v1
+  - patch: ingress-patch-medusa.yaml
+    target:
       kind: Ingress
-      metadata:
-        name: alex-brot
-      spec:
-        rules:
-          - host: dev.medusa.alex-brot.stenz.dev
-        tls:
-          - secretName: alex-brot-backend-tls
-            hosts:
-              - dev.medusa.alex-brot.stenz.dev
-  - patch: |-
-      apiVersion: networking.k8s.io/v1
+      name: alex-brot
+  - patch: ingress-patch-storefront.yaml
+    target:
       kind: Ingress
-      metadata:
-        name: alex-brot-frontend
-      spec:
-        rules:
-          - host: dev.alex-brot.stenz.dev
-        tls:
-          - secretName: alex-brot-storefront-tls
-            hosts:
-              - dev.alex-brot.stenz.dev
+      name: alex-brot-frontend
