@@ -31,7 +31,7 @@ patches:
             spec:
               containers:
                 - name: alex-brot-storefront
-                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:11486984074
+                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:11891130000
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
