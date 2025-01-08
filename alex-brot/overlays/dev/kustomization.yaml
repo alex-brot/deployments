@@ -32,6 +32,9 @@ patches:
               containers:
                 - name: alex-brot-storefront
                   image: ghcr.io/alex-brot/alex-brot-storefront-dev:11938840843
+                  env:
+                    - name: NEXT_PUBLIC_MEDUSA_BACKEND_URL
+                      value: https://dev.medusa.alex-brot.stenz.dev
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
