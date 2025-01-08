@@ -30,7 +30,7 @@ spec:
                   key: s3-file-url
                   name: alex-brot-secrets
             - name: NODE_ENV
-              value: production
+              value: development
             - name: S3_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
