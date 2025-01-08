@@ -56,11 +56,11 @@ spec:
                 secretKeyRef:
                   key: s3-endpoint
                   name: alex-brot-secrets
-           #- name: STRIPE_API_KEY
-           #  valueFrom:
-           #    secretKeyRef:
-           #      key: stripe-api-key
-           #      name: alex-brot-secrets
+            - name: STRIPE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: stripe-api-key
+                  name: alex-brot-secrets
 
 ---
 apiVersion: v1
