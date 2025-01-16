@@ -17,7 +17,7 @@ spec:
           image: ghcr.io/alex-brot/alex-brot-storefront:latest
           imagePullPolicy: Always
           env:
-            - name: NEXT_PUBLIC_MEDUSA_BACKEND_URL
+            - name: MEDUSA_BACKEND_URL
               value: https://medusa.alex-brot.stenz.dev
             - name: NEXT_PUBLIC_DEFAULT_REGION
               value: at
