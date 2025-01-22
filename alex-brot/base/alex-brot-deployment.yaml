@@ -17,6 +17,8 @@ spec:
           image: ghcr.io/alex-brot/alex-brot-backend:latest
           imagePullPolicy: Always
           env:
+            - name: NODE_ENV
+              value: production
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
