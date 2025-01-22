@@ -17,8 +17,10 @@ spec:
           image: ghcr.io/alex-brot/alex-brot-backend:latest
           imagePullPolicy: Always
           env:
-            - name: NODE_ENV
+            - name: BUILD_PROD
               value: production
+            - name: NODE_ENV
+              value: development # https://github.com/medusajs/medusa/issues/10147
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
