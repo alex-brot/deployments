@@ -20,7 +20,7 @@ spec:
             - name: BUILD_PROD
               value: production
             - name: NODE_ENV
-              value: production # https://github.com/medusajs/medusa/issues/10147
+              value: development # https://github.com/medusajs/medusa/issues/10147
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
