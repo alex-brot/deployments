@@ -12,4 +12,4 @@ helmCharts:
     releaseName: valkey
     repo: https://charts.bitnami.com/bitnami
     valuesFile: valkey.values.yaml
-    version: 2.2.0
+    version: latest
