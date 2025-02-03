@@ -9,6 +9,7 @@ spec:
   version: 2.2.3
   targetNamespace: alex-brot
   valuesContent: |-
+    architecture: standalone
     global:
       defaultStorageClass: local-path
     auth:
@@ -16,3 +17,4 @@ spec:
       usePassword: true
       existingSecret: valkey-secret
     existingSecretPasswordKey: password
+
