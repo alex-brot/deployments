@@ -40,6 +40,8 @@ patches:
                         secretKeyRef:
                           key: publishable-api-key
                           name: alex-brot-secrets
+                    - name: REDIS_URL
+                      value: valkey.alex-brot.svc.cluster.local:6379
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
