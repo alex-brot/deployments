@@ -16,5 +16,5 @@ spec:
       enabled: true
       usePassword: true
       existingSecret: valkey-secret
-    existingSecretPasswordKey: password
+      existingSecretPasswordKey: password
 
