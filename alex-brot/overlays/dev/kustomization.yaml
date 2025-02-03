@@ -21,6 +21,8 @@ patches:
                 env:
                   - name: ADMIN_CORS
                     value: https://dev.medusa.alex-brot.stenz.dev
+                  - name: REDIS_URL
+                    value: valkey.alex-brot-dev.svc.cluster.local:6379
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
@@ -40,8 +42,6 @@ patches:
                         secretKeyRef:
                           key: publishable-api-key
                           name: alex-brot-secrets
-                    - name: REDIS_URL
-                      value: valkey.alex-brot-dev.svc.cluster.local:6379
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
