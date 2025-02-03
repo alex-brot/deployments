@@ -1,4 +1,23 @@
 [
-  {"op": "replace", "path": "/metadata/name", "value": "valkey-dev"},
-  {"op": "replace", "path": "/spec/targetNamespace", "value": "alex-brot-dev"}
+  {
+    "op": "replace",
+    "path": "/metadata/name",
+    "value": "valkey-dev"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/targetNamespace",
+    "value": "alex-brot-dev"
+  },
+  {
+    "op": "add",
+    "path": "/spec/valuesContent/env",
+    "value": [
+      {
+        "name": "REDIS_URL",
+        "value": "valkey.alex-brot-dev.svc.cluster.local:6379"
+      }
+    ]
+  }
 ]
+

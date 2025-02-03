@@ -13,8 +13,7 @@ spec:
     global:
       defaultStorageClass: local-path
     auth:
-      enabled: true
-      usePassword: true
+      enabled: false
+      usePassword: false
       existingSecret: valkey-secret
       existingSecretPasswordKey: password
-
