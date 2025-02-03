@@ -48,7 +48,10 @@ patches:
     target:
       kind: Ingress
       name: alex-brot-frontend
-  - path: valkey-patch.yaml
-    target:
+patchesJson6902:
+  - target:
+      group: helm.cattle.io
+      version: v1
       kind: HelmChart
       name: valkey
+    path: valkey-patch.yaml
