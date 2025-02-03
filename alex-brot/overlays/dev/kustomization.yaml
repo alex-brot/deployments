@@ -48,3 +48,7 @@ patches:
     target:
       kind: Ingress
       name: alex-brot-frontend
+  - path: valkey-patch.yaml
+    target:
+      kind: HelmChart
+      name: valkey

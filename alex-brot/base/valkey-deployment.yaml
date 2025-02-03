@@ -1,0 +1,18 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: valkey
+  namespace: kube-system
+spec:
+  repo: https://charts.bitnami.com/bitnami
+  chart: valkey
+  version: 2.2.3
+  targetNamespace: alex-brot
+  valuesContent: |-
+    global:
+      defaultStorageClass: local-path
+    auth:
+      enabled: true
+      usePassword: true
+      existingSecret: valkey-secret
+    existingSecretPasswordKey: password

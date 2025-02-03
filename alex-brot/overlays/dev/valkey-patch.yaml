@@ -1,0 +1,4 @@
+[
+  {"op": "replace", "path": "/metadata/name", "value": "valkey-dev"},
+  {"op": "replace", "path": "/spec/targetNamespace", "value": "alex-brot-dev"}
+]'

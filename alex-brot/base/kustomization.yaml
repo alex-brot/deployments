@@ -6,10 +6,4 @@ resources:
 - postgres-cluster.yaml
 - alex-brot-deployment.yaml
 - storefront-deployment.yaml
-
-helmCharts:
-  - name: valkey
-    releaseName: valkey
-    repo: https://charts.bitnami.com/bitnami
-    valuesFile: valkey.values.yaml
-    version: 2.2.3
+- valkey-deployment.yaml
