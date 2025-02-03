@@ -64,7 +64,7 @@ spec:
                   key: stripe-api-key
                   name: alex-brot-secrets
             - name: REDIS_URL
-              value: valkey.alex-brot.svc.cluster.local:6379
+              value: redis://valkey.alex-brot.svc.cluster.local:6379
 
 ---
 apiVersion: v1
