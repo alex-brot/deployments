@@ -17,7 +17,7 @@ patches:
           spec:
             containers:
               - name: alex-brot-backend
-                image: ghcr.io/alex-brot/alex-brot-medusa-dev:13112214283
+                image: ghcr.io/alex-brot/alex-brot-medusa-dev:13112509688
                 env:
                   - name: ADMIN_CORS
                     value: https://dev.medusa.alex-brot.stenz.dev
