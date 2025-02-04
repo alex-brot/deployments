@@ -27,7 +27,7 @@ spec:
                   key: uri
                   name: alex-brot-postgres-app
             - name: ADMIN_CORS
-              value: https://medusa.alex-brot.stenz.dev
+              value: http://localhost:9000
             - name: S3_FILE_URL
               valueFrom:
                 secretKeyRef:
