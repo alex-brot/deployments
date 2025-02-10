@@ -17,7 +17,7 @@ patches:
           spec:
             containers:
               - name: alex-brot-backend
-                image: ghcr.io/alex-brot/alex-brot-medusa-dev:13216577937
+                image: ghcr.io/alex-brot/alex-brot-medusa-dev:13241086848
                 env:
                   - name: VITE_BACKEND_URL
                     value: https://hihitest.com
