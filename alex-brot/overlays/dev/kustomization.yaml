@@ -35,7 +35,7 @@ patches:
             spec:
               containers:
                 - name: alex-brot-storefront
-                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:13167403208
+                  image: image: ghcr.io/alex-brot/alex-brot-storefront-dev:13167403208
                   env:
                     - name: MEDUSA_BACKEND_URL
                       value: https://dev.medusa.alex-brot.stenz.dev
@@ -44,6 +44,20 @@ patches:
                         secretKeyRef:
                           key: publishable-api-key
                           name: alex-brot-secrets
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-strapi
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-storefront
+                  image: ghcr.io/alex-brot/alex-brot-strapi:latest
+                  env:
+                    - name: BLOG_REVALIDATE_URL
+                      value: https://dev.alex-brot.stenz.dev/api/blog/revalidate
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
@@ -52,6 +66,10 @@ patches:
     target:
       kind: Ingress
       name: alex-brot-frontend
+  - path: ingress-patch-strapi.yaml
+    target:
+      kind: Ingress
+      name: alex-brot-strapi
 patchesJson6902:
   - target:
       group: helm.cattle.io

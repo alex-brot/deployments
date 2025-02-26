@@ -7,3 +7,4 @@ resources:
 - alex-brot-deployment.yaml
 - storefront-deployment.yaml
 - valkey-deployment.yaml
+- postgres-strapi-cluster.yaml

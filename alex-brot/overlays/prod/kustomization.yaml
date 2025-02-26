@@ -35,3 +35,14 @@ patches:
                         secretKeyRef:
                           key: publishable-api-key
                           name: alex-brot-secrets
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-strapi
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-storefront
+                  image: ghcr.io/alex-brot/alex-brot-strapi:latest

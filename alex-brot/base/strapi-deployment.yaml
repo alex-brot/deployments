@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alex-brot-strapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alex-brot-strapi
+  template:
+    metadata:
+      labels:
+        app: alex-brot-strapi
+    spec:
+      containers:
+        - name: alex-brot-strapi
+          image: ghcr.io/alex-brot/alex-brot-strapi-storefront:latest
+          imagePullPolicy: Always
+          env:
+            - name: HOST
+              value: 0.0.0.0
+            - name: PORT
+              value: 1337
+              ######### DATABASE ##########
+            - name: DATABASE_CLIENT
+              value: postgres
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alex-brot-strapi-postgres-app
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alex-brot-strapi-postgres-app
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alex-brot-strapi-postgres-app
+                  key: dbname
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: alex-brot-strapi-postgres-app
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alex-brot-strapi-postgres-app
+                  key: password
+            - name: DATABASE_SSL
+              value: false
+              ######### SECRETS #########
+            - name: APP_KEYS
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: app-keys
+            - name: API_TOKEN_SALT
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: api-token-salt
+            - name: JWT_SECRET
+              valeFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: jwt-secret
+            - name: ADMIN_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: admin-jwt-secret
+            - name: TRANSFER_TOKEN_SALT
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: transfer-token-salt
+            - name: BLOG_REVALIDATE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: blog-revalidate-secret
+              ########### Config ########### 
+            - name: BLOG_REVALIDATE_URL
+              value: https://alex-brot.stenz.dev/api/blog/revalidate
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alex-brot-strapi
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    app: alex-brot-strapi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alex-brot-strapi
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+spec:
+  rules:
+    - host: alex-brot.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: alex-brot-strapi
+                port:
+                  number: 8000
+  tls:
+    - secretName: alex-brot-strapi-tls
+      hosts:
+        - strapi.alex-brot.stenz.dev
