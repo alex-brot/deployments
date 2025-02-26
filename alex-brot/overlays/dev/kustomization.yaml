@@ -35,7 +35,8 @@ patches:
             spec:
               containers:
                 - name: alex-brot-storefront
-                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:13262879370
+                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:13167403208
+                  env:
                     - name: MEDUSA_BACKEND_URL
                       value: https://dev.medusa.alex-brot.stenz.dev
                     - name: NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
