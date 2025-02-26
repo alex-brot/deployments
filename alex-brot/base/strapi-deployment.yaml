@@ -94,8 +94,8 @@ metadata:
   name: alex-brot-strapi
 spec:
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 1337
+      targetPort: 1337
       protocol: TCP
       name: http
   selector:
@@ -120,7 +120,7 @@ spec:
               service:
                 name: alex-brot-strapi
                 port:
-                  number: 8000
+                  number: 1337
   tls:
     - secretName: alex-brot-strapi-tls
       hosts:
