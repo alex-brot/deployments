@@ -8,3 +8,4 @@ resources:
 - storefront-deployment.yaml
 - valkey-deployment.yaml
 - postgres-strapi-cluster.yaml
+- strapi-deployment.yaml
