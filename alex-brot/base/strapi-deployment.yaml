@@ -50,7 +50,7 @@ spec:
                   name: alex-brot-strapi-postgres-app
                   key: password
             - name: DATABASE_SSL
-              value: false
+              value: "false"
               ######### SECRETS #########
             - name: APP_KEYS
               valueFrom:
