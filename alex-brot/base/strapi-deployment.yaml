@@ -20,7 +20,7 @@ spec:
             - name: HOST
               value: 0.0.0.0
             - name: PORT
-              value: 1337
+              value: "1337"
               ######### DATABASE ##########
             - name: DATABASE_CLIENT
               value: postgres
@@ -63,7 +63,7 @@ spec:
                   name: strapi-secret
                   key: api-token-salt
             - name: JWT_SECRET
-              valeFrom:
+              valueFrom:
                 secretKeyRef:
                   name: strapi-secret
                   key: jwt-secret
