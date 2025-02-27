@@ -54,8 +54,7 @@ patches:
             spec:
               containers:
                 - name: alex-brot-strapi
-                  image: busybox
-                  command: ["sh", "-c", "printenv && sleep 3600"]
+                  image: ghcr.io/alex-brot/alex-brot-strapi:13563332277
                   env:
                     - name: BLOG_REVALIDATE_URL
                       value: https://dev.alex-brot.stenz.dev/api/blog/revalidate
