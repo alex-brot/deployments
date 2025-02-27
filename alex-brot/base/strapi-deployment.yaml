@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: alex-brot-strapi
-          image: ghcr.io/alex-brot/alex-brot-strapi-storefront:latest
+          image: ghcr.io/alex-brot/alex-brot-strapi:latest
           imagePullPolicy: Always
           env:
             - name: HOST
