@@ -53,7 +53,7 @@ patches:
           template:
             spec:
               containers:
-                - name: alex-brot-storefront
+                - name: alex-brot-strapi
                   image: busybox
                   command: ["sh", "-c", "printenv && sleep 3600"]
                   env:
