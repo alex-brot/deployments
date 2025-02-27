@@ -44,5 +44,5 @@ patches:
           template:
             spec:
               containers:
-                - name: alex-brot-storefront
+                - name: alex-brot-strapi
                   image: ghcr.io/alex-brot/alex-brot-strapi:13564396659
