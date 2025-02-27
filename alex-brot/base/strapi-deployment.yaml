@@ -111,7 +111,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
 spec:
   rules:
-    - host: alex-brot.stenz.dev
+    - host: strapi.alex-brot.stenz.dev
       http:
         paths:
           - path: /
