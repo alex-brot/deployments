@@ -28,6 +28,11 @@ spec:
                 secretKeyRef:
                   key: blog-api-token
                   name: alex-brot-secrets
+            - name: REVALIDATE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: strapi-secret
+                  key: blog-revalidate-secret
 
 ---
 apiVersion: v1
