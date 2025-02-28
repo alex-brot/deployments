@@ -21,6 +21,14 @@ spec:
               value: https://medusa.alex-brot.stenz.dev
             - name: NEXT_PUBLIC_DEFAULT_REGION
               value: at
+            - name: BLOG_POST_URL
+              value: https://strapi.alex-brot.stenz.dev
+            - name: BLOG_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: blog-api-token
+                  name: alex-brot-secrets
+
 ---
 apiVersion: v1
 kind: Service

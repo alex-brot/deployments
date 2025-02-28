@@ -44,6 +44,8 @@ patches:
                         secretKeyRef:
                           key: publishable-api-key
                           name: alex-brot-secrets
+                    - name: BLOG_POST_URL
+                      value: https://dev.strapi.alex-brot.stenz.dev
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
