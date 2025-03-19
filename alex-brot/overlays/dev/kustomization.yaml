@@ -39,11 +39,6 @@ patches:
                   env:
                     - name: MEDUSA_BACKEND_URL
                       value: https://dev.medusa.alex-brot.stenz.dev
-                    - name: NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
-                      valueFrom:
-                        secretKeyRef:
-                          key: publishable-api-key
-                          name: alex-brot-secrets
                     - name: BLOG_POST_URL
                       value: https://dev.strapi.alex-brot.stenz.dev
   - patch: |-

@@ -19,6 +19,11 @@ spec:
           env:
             - name: MEDUSA_BACKEND_URL
               value: https://medusa.alex-brot.stenz.dev
+            - name: NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: publishable-api-key
+                  name: alex-brot-secrets
             - name: NEXT_PUBLIC_DEFAULT_REGION
               value: at
             - name: BLOG_POST_URL
