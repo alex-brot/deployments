@@ -29,6 +29,12 @@ patches:
               containers:
                 - name: alex-brot-storefront
                   image: ghcr.io/alex-brot/alex-brot-storefront-dev:13823009895
+                  env:
+                    - name: MEDUSA_PUBLISHABLE_KEY
+                      valueFrom:
+                        secretKeyRef:
+                          key: publishable-api-key
+                          name: alex-brot-secrets
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
