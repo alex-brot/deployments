@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: alex-brot
+namespace: alex-brot-dev
 
 resources:
   - ../../base
@@ -18,6 +18,9 @@ patches:
             containers:
               - name: alex-brot-backend
                 image: ghcr.io/alex-brot/alex-brot-medusa:v0.0.2
+                env:
+                  - name: ADMIN_CORS
+                    value: https://medusa.alex-brot.stenz.dev
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
@@ -30,11 +33,10 @@ patches:
                 - name: alex-brot-storefront
                   image: ghcr.io/alex-brot/alex-brot-storefront-dev:13823009895
                   env:
-                    - name: MEDUSA_PUBLISHABLE_KEY
-                      valueFrom:
-                        secretKeyRef:
-                          key: publishable-api-key
-                          name: alex-brot-secrets
+                    - name: MEDUSA_BACKEND_URL
+                      value: https://medusa.alex-brot.stenz.dev
+                    - name: BLOG_POST_URL
+                      value: https://strapi.alex-brot.stenz.dev
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
@@ -46,3 +48,6 @@ patches:
               containers:
                 - name: alex-brot-strapi
                   image: ghcr.io/alex-brot/alex-brot-strapi:13564396659
+                  env:
+                    - name: BLOG_REVALIDATE_URL
+                      value: https://alex-brot.stenz.dev/api/blog/revalidate
