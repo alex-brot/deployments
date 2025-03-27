@@ -40,7 +40,7 @@ patches:
                     - name: MEDUSA_BACKEND_URL
                       value: https://production.medusa.alex-brot.stenz.dev
                     - name: BLOG_POST_URL
-                      value: https://production.strapi.alex-brot.stenz.dev
+                      value: https://strapi.alex-brot.stenz.dev
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
