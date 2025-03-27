@@ -34,9 +34,9 @@ patches:
                   image: ghcr.io/alex-brot/alex-brot-storefront-dev:13823009895
                   env:
                     - name: MEDUSA_BACKEND_URL
-                      value: https://medusa.alex-brot.stenz.dev
+                      value: https://dev.medusa.alex-brot.stenz.dev
                     - name: BLOG_POST_URL
-                      value: https://strapi.alex-brot.stenz.dev
+                      value: https://dev.strapi.alex-brot.stenz.dev
   - patch: |-
         apiVersion: apps/v1
         kind: Deployment
