@@ -1,17 +1,17 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: alex-brot-backend-prod
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/alex-brot/deployments
-    path: alex-brot/overlays/prod
-    targetRevision: HEAD
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: default
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: alex-brot-backend-prod
+#  namespace: argocd
+#spec:
+#  project: default
+#  source:
+#    repoURL: https://github.com/alex-brot/deployments
+#    path: alex-brot/overlays/prod
+#    targetRevision: HEAD
+#  destination:
+#    server: "https://kubernetes.default.svc"
+#    namespace: default
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -27,19 +27,18 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
-    #---
-    #apiVersion: argoproj.io/v1alpha1
-    #kind: Application
-    #metadata:
-    #  name: alex-brot-backend-dev
-    #  namespace: argocd
-    #spec:
-    #  project: default
-    #  source:
-    #    repoURL: https://github.com/alex-brot/k8s-deployments
-    #    path: alex-brot/overlays/dev
-    #    targetRevision: HEAD
-    #  destination:
-    #    server: "https://kubernetes.default.svc"
-    #    namespace: default
-    #
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alex-brot-production
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alex-brot/deployments
+    path: alex-brot/overlays/production
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default

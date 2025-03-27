@@ -2,7 +2,7 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: valkey
-  namespace: kube-system
+  namespace: alex-brot
 spec:
   repo: https://charts.bitnami.com/bitnami
   chart: valkey
