@@ -1,0 +1,76 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: alex-brot-production
+
+resources:
+  - ../../base
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: alex-brot-backend
+      spec:
+        template:
+          spec:
+            containers:
+              - name: alex-brot-backend
+                image: ghcr.io/alex-brot/alex-brot-medusa-dev:13829908390
+                env:
+                  - name: VITE_BACKEND_URL
+                    value: https://hihitest.com
+                  - name: ADMIN_CORS
+                    value: https://prod.medusa.alex-brot.stenz.dev
+                  - name: REDIS_URL
+                    value: rediss://valkey-dev-primary.alex-brot-dev.svc.cluster.local:6379
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-storefront
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-storefront
+                  image: ghcr.io/alex-brot/alex-brot-storefront-dev:13823009895
+                  env:
+                    - name: MEDUSA_BACKEND_URL
+                      value: https://prod.medusa.alex-brot.stenz.dev
+                    - name: BLOG_POST_URL
+                      value: https://prod.strapi.alex-brot.stenz.dev
+  - patch: |-
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: alex-brot-strapi
+        spec:
+          template:
+            spec:
+              containers:
+                - name: alex-brot-strapi
+                  image: ghcr.io/alex-brot/alex-brot-strapi:13564396659
+                  env:
+                    - name: BLOG_REVALIDATE_URL
+                      value: https://dev.alex-brot.stenz.dev/api/blog/revalidate
+  - path: ingress-patch-medusa.yaml
+    target:
+      kind: Ingress
+      name: alex-brot
+  - path: ingress-patch-storefront.yaml
+    target:
+      kind: Ingress
+      name: alex-brot-frontend
+  - path: ingress-patch-strapi.yaml
+    target:
+      kind: Ingress
+      name: alex-brot-strapi
+patchesJson6902:
+  - target:
+      group: helm.cattle.io
+      version: v1
+      kind: HelmChart
+      name: valkey
+    path: valkey-patch.yaml
