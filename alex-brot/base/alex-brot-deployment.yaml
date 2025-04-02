@@ -68,6 +68,8 @@ spec:
             - name: REDIS_URL
               #value: redis://valkey-primary.alex-brot.svc.cluster.local:6379
               value: ""
+            - name: VITE_MEDUSA_ADMIN_MEDUSA_DOCUMENTS_HIDE_PRO
+              value: true
 
 ---
 apiVersion: v1
