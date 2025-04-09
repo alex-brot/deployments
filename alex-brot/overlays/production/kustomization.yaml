@@ -55,22 +55,22 @@ patches:
                   env:
                     - name: BLOG_REVALIDATE_URL
                       value: https://alex-brot.stenz.dev/api/blog/revalidate
-  - path: ingress-patch-medusa.yaml
-    target:
-      kind: Ingress
-      name: alex-brot
-  - path: ingress-patch-storefront.yaml
-    target:
-      kind: Ingress
-      name: alex-brot-frontend
-  - path: ingress-patch-strapi.yaml
-    target:
-      kind: Ingress
-      name: alex-brot-strapi
-patchesJson6902:
-  - target:
-      group: helm.cattle.io
-      version: v1
-      kind: HelmChart
-      name: valkey
-    path: valkey-patch.yaml
+#  - path: ingress-patch-medusa.yaml
+#    target:
+#      kind: Ingress
+#      name: alex-brot
+#  - path: ingress-patch-storefront.yaml
+#    target:
+#      kind: Ingress
+#      name: alex-brot-frontend
+#  - path: ingress-patch-strapi.yaml
+#    target:
+#      kind: Ingress
+#      name: alex-brot-strapi
+#patchesJson6902:
+#  - target:
+#      group: helm.cattle.io
+#      version: v1
+#      kind: HelmChart
+#      name: valkey
+#    path: valkey-patch.yaml
