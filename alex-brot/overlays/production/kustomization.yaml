@@ -22,7 +22,7 @@ patches:
                   - name: VITE_BACKEND_URL
                     value: https://hihitest.com
                   - name: ADMIN_CORS
-                    value: https://production.medusa.alex-brot.stenz.dev
+                    value: https://medusa.alex-brot.stenz.dev
                   - name: REDIS_URL
                     value: rediss://valkey-dev-primary.alex-brot-dev.svc.cluster.local:6379
   - patch: |-
@@ -38,7 +38,7 @@ patches:
                   image: ghcr.io/alex-brot/alex-brot-storefront:v0.0.2
                   env:
                     - name: MEDUSA_BACKEND_URL
-                      value: https://production.medusa.alex-brot.stenz.dev
+                      value: https://medusa.alex-brot.stenz.dev
                     - name: BLOG_POST_URL
                       value: https://strapi.alex-brot.stenz.dev
   - patch: |-
@@ -54,7 +54,7 @@ patches:
                   image: ghcr.io/alex-brot/alex-brot-strapi:13564396659
                   env:
                     - name: BLOG_REVALIDATE_URL
-                      value: https://production.alex-brot.stenz.dev/api/blog/revalidate
+                      value: https://alex-brot.stenz.dev/api/blog/revalidate
   - path: ingress-patch-medusa.yaml
     target:
       kind: Ingress
